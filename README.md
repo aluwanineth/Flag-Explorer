@@ -49,7 +49,6 @@ flag-explorer-app/
 │   │   ├── features/                # Feature modules (countries)
 │   │   │   └── countries/           # Country-related components
 │   │   └── shared/                  # Shared components and utilities
-│   └── e2e/                         # TestCafe integration tests
 └── angular.json                     # Angular configuration
 ```
 
