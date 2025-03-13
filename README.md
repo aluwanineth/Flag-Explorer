@@ -97,6 +97,7 @@ export const environment = {
   apiUrl: 'https://localhost:7122/api'
 };
 ```
+
 ## Running the Application
 
 ### Backend
@@ -141,10 +142,10 @@ To run specific test projects:
 
 ```bash
 # Run unit tests only
-dotnet test tests/FlagExplorer.UnitTests
+dotnet test FlagExplorer.UnitTests
 
 # Run integration tests only
-dotnet test tests/FlagExplorer.IntegrationTests
+dotnet test FlagExplorer.IntegrationTests
 ```
 
 ### Running Frontend Tests
@@ -227,6 +228,7 @@ ng test --include="**/country.service.spec.ts"
 ng test --include="**/country-list.component.spec.ts"
 ng test --include="**/country-details.component.spec.ts"
 ng test --include="**/error-handler.service.spec.ts"
+```
 
 ## Deployment
 
