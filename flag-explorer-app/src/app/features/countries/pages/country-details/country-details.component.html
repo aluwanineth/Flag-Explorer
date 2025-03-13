@@ -1,0 +1,54 @@
+<div class="container mx-auto p-4">
+  <button (click)="goBack()" class="mb-4 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded flex items-center">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+      <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+    </svg>
+    Back to Countries
+  </button>
+  
+  <div *ngIf="loading" class="flex justify-center my-8">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+  
+  <div *ngIf="error" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+    <p>{{ errorMessage }}</p>
+    <button (click)="loadCountryDetails()" class="mt-2 bg-red-500 text-white py-1 px-3 rounded hover:bg-red-600">
+      Try Again
+    </button>
+  </div>
+
+  <div *ngIf="(countryDetails$ | async) as country" class="bg-white shadow-md rounded-lg overflow-hidden">
+    <div class="md:flex">
+      <div class="md:w-1/2 p-4 flex items-center justify-center bg-gray-100">
+        <img [src]="country.flag" [alt]="country.name + ' flag'" class="max-w-full max-h-96 object-contain">
+      </div>
+      <div class="md:w-1/2 p-6">
+        <h1 class="text-3xl font-bold mb-6">{{ country.name }}</h1>
+        
+        <div class="space-y-6">
+          <div class="flex items-start border-b pb-4">
+            <div class="font-semibold w-28">Capital:</div>
+            <div class="text-lg">{{ country.capital }}</div>
+          </div>
+          
+          <div class="flex items-start border-b pb-4">
+            <div class="font-semibold w-28">Population:</div>
+            <div class="text-lg">{{ country.population | number }}</div>
+          </div>
+          
+          <div class="mt-6">
+            <a href="https://en.wikipedia.org/wiki/{{country.name}}" target="_blank" 
+               class="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded hover:bg-blue-200 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Learn more about {{ country.name }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
